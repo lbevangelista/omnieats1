@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:omnieats1/pages/checkout.dart';
+import 'package:omnieats1/pages/shop_items.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -427,7 +429,7 @@ class Merchants extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => LoginPage()),
+                            MaterialPageRoute(builder: (context) => Ambers()),
                           );
                         },
                       )),
@@ -559,35 +561,27 @@ class Merchants extends StatelessWidget {
                           );
                         },
                       )),
-                  MaterialButton(
-
-                    padding: EdgeInsets.all(8.0),
-                    textColor: Colors.white,
-                    splashColor: Colors.greenAccent,
-                    elevation: 8.0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/button_color.png'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("SIGN OUT"),
-                      ),
-                    ),
-                    // ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
-                    },
-                  ),
-                ]
+                  Container(
+                      height: 50,
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // background
+                          onPrimary: Colors.black, // foreground
+                        ),
+                        child: Text('Aling Nenas Karenderia'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginPage()),
+                          );
+                        },
+                      )),
+        ]
 
             )
         ),
+
 
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: 0, // this will be set when a new tab is tapped
@@ -597,16 +591,43 @@ class Merchants extends StatelessWidget {
           title: new Text('Home'),
       ),
         BottomNavigationBarItem(
-          icon: new Icon(Icons.mail),
-          title: new Text('Messages'),
+          icon: new Icon(Icons.receipt),
+          title: new Text('Receipt'),
         ),
         BottomNavigationBarItem(
             icon: Icon(Icons.person),
             title: Text('Profile')
         )
-
       ],
     ),
+    );
+  }
+}
+
+class Ambers extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Map<int, Color> color = {
+      50: Color.fromRGBO(0, 144, 255, .1),
+      100: Color.fromRGBO(0, 144, 255, .2),
+      200: Color.fromRGBO(0, 144, 255, .3),
+      300: Color.fromRGBO(0, 144, 255, .4),
+      400: Color.fromRGBO(0, 144, 255, .5),
+      500: Color.fromRGBO(0, 144, 255, .6),
+      600: Color.fromRGBO(0, 144, 255, .7),
+      700: Color.fromRGBO(0, 144, 255, .8),
+      800: Color.fromRGBO(0, 144, 255, .9),
+      900: Color.fromRGBO(0, 144, 255, 1),
+    };
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: MaterialColor(0xFF0288D1, color),
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (BuildContext context) => ShopItems(),
+        '/checkout': (BuildContext context) => Checkout()
+      },
     );
   }
 }
