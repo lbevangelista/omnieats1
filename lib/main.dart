@@ -267,7 +267,6 @@ class Registration1 extends StatelessWidget {
         appBar: AppBar(
           title: Text("Registration"),
         ),
-
         body: Center(
           child: ListView(
               children: <Widget>[
